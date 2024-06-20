@@ -17,14 +17,12 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import java.io.IOException;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,7 +36,7 @@ public class RoomOptimizationTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void optimizeRoomUsageTest() throws Exception {
+    public void optimizeRoomUsageTest () throws Exception {
         OccupancyRequest guestData = getGuestsFromJson("test_1.json");
 
         MvcResult mvcResult = mockMvc.perform(post("/api/v1/occupancy/optimize")
@@ -151,6 +149,7 @@ public class RoomOptimizationTest {
         assertEquals(45.0d, occupancyResult.economyRevenue(), 0.01d);
         assertNotNull(occupancyResult.totalRevenue());
     }
+
     private OccupancyRequest getGuestsFromJson (String name) throws IOException {
         Resource resource = new ClassPathResource(name);
         return new ObjectMapper().readValue(resource.getInputStream(), OccupancyRequest.class);
