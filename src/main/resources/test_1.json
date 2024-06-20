@@ -1,0 +1,16 @@
+{
+  "premiumRooms": 3,
+  "economyRooms": 3,
+  "potentialGuests": [
+    23,
+    45,
+    155,
+    374,
+    22,
+    99.99,
+    100,
+    101,
+    115,
+    209
+  ]
+}
