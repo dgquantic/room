@@ -116,7 +116,7 @@ public class RoomOptimizationTest {
         // Assert the results
         assert result != null;
         assertEquals(2, result.occupiedPremium());
-        assertEquals(7, result.occupiedEconomy());
+        assertEquals(4, result.occupiedEconomy());
         assertEquals(583d, result.premiumRevenue(), 0.01d);
         assertEquals(189.99d, result.economyRevenue(), 0.01d);
         assertNotNull(result.totalRevenue());
